@@ -34,5 +34,21 @@ app.post('/products', function(req, res) {
     res.send('Successfully created product!');
 });
 
+app.put('/products/:id', function(req, res) {
+    var id = req.params.id;
+    var newName = req.body.newName;
+
+    var found = false;
+
+    products.forEach(function(product, index) {
+        if (!found && product.id === Number(id)) {
+            product.name = newName;
+        }
+    });
+
+    res.send('Succesfully updated product!');
+});
+
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
