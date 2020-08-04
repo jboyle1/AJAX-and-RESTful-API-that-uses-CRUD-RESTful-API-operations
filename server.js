@@ -49,6 +49,19 @@ app.put('/products/:id', function(req, res) {
     res.send('Succesfully updated product!');
 });
 
+app.delete('/products/:id', function(req, res) {
+    var id = req.params.id;
+
+    var found = false;
+
+    products.forEach(function(product, index) {
+        if (!found && product.id === Number(id)) {
+            products.splice(index, 1);
+        }
+    });
+
+    res.send('Successfully deleted product!');
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
