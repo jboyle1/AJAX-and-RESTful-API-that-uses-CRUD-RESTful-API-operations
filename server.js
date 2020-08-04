@@ -18,7 +18,7 @@ let currentId = 2;
 app.use(express.static(__dirname));
 
 app.get('/products', function(req, res) {
-    res.send('SUCCESS!');
+    res.send({ products: products });
 })
 
 const PORT = process.env.PORT || 5000;
